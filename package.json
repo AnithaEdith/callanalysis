@@ -1,0 +1,17 @@
+{
+  "name": "callanalysis",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "linq": "^3.1.1",
+    "lodash": "^4.17.11",
+    "monkeylearn": "^3.2.1"
+  }
+}
