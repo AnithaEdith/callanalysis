@@ -9,6 +9,15 @@ var _ = require('lodash');
 // Classify some texts
 // let model_id = 'cl_sGdE8hD9'
 // the full options are described in the docs: https://monkeylearn.com/api/v3/#classify
+/*
+let classifyResponse = ml.classifiers.classify(model_id, data).then(response => {
+    console.log(response)
+    console.log(response.body)
+}).catch(error => {
+    console.log(error)
+    console.log(error.response)
+})
+*/
 let data = [
     'I dont do recommendations but your process tries to trick people into an upgrade',
     'Quick, easy to rechartge, great service coverage',
