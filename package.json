@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "node src",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "format": "prettier --write --single-quote --no-semi --print-width=120 --tab-width=2 \"src/**/*.{js,jsx} \""
   },
   "author": "",
   "license": "ISC",
@@ -13,6 +14,7 @@
     "express": "^4.16.4",
     "linq": "^3.1.1",
     "lodash": "^4.17.11",
-    "monkeylearn": "^3.2.1"
+    "monkeylearn": "^3.2.1",
+    "prettier": "^1.16.4"
   }
 }
