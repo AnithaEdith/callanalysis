@@ -1,14 +1,7 @@
 var groupByUtil = require('./util/groupByUtil.js')
 
 var _ = require('lodash')
-const MonkeyLearn = require('monkeylearn')
-
-// Use the API key from your account
-const ml = new MonkeyLearn('d55d5e52befb1cf6c20cf1c21ad2ea11b14dc4b0')
-
-// Classify some texts
-let model_id = 'cl_sGdE8hD9'
-// the full options are described in the docs: https://monkeylearn.com/api/v3/#classify
+require('dotenv').config()
 
 let data = [
   'I dont do recommendations but your process tries to trick people into an upgrade',
@@ -42,14 +35,31 @@ async function prepareChartData(classifyResponse) {
 
 async function monkeylearnApi() {
   return new Promise(resolve => {
-    ml.classifiers
-      .classify(model_id, data)
-      .then(response => {
-        resolve(response.body)
-      })
-      .catch(error => {
-        resolve(mockClassifyResponse)
-      })
+    const monkeyenabled = process.env.MONKEY_LEARN_ENABLE === '1' ?  true : false;
+    console.log(`monkey learn enabled? ${monkeyenabled}`);
+    if(monkeyenabled) {
+      console.log('monkey flag enabled');
+      const MonkeyLearn = require('monkeylearn')
+
+      // Use the API key from your account
+      const ml = new MonkeyLearn(process.env.MONKEY_CLASSIFIER_LICENSE_KEY)
+
+      // Classify some texts
+      let model_id = process.env.MONKEY_CLASSIFIER_MODEL_ID
+      // the full options are described in the docs: https://monkeylearn.com/api/v3/#classify
+
+      ml.classifiers
+        .classify(model_id, data)
+        .then(response => {
+          resolve(response.body)
+        })
+        .catch(error => {
+          resolve(mockClassifyResponse)
+        })
+    } else {
+      console.log('monkey call disabled');
+      resolve(mockClassifyResponse)
+    }
   })
 }
 
