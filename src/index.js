@@ -21,6 +21,10 @@ app.get('/telstraModelExtractor', async (req, res, next) => {
   res.json(await telstraModelExtractor())
 })
 
+app.get('/sample', (req, res, next) => {
+  res.send('Welcome to Call Analysis sample')
+})
+
 app.get('/', (req, res, next) => {
   res.send('Welcome to Call Analysis')
 })
